@@ -17,7 +17,7 @@
 
 - [x] **[Chore] [PHILOSOPHY-LOW]: Add `.xcode-version` File for Xcode Version Consistency**
   - **Complexity**: Small
-  - **Rationale**: Reduces "works on my machine" issues and ensures a consistent development environment for all team members and CI. Aligns with "Tooling and Environment". (Elevated to High due to its foundational nature for team consistency).
+  - **Rationale**: Reduces "works on my machine" issues and ensures a consistent development environment for all team members and CI. Aligns with "Tooling and Environment".
   - **Expected Outcome**: An `.xcode-version` file in the project root specifying the exact Xcode version to be used.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Standardize Swift Version (as Xcode version dictates Swift compatibility)
 
@@ -34,16 +34,16 @@
   - **Expected Outcome**: Uniform code appearance, reduced style debates, and improved readability. Formatter (e.g., SwiftFormat with `.swiftformat` config) integrated into pre-commit hooks and CI.
   - **Dependencies**: None
 
-- **[Refactor] [PHILOSOPHY-LOW]: Apply `final` Keyword to Non-Inheritable Application Classes**
-    - **Complexity**: Small
-    - **Rationale**: Improves code clarity by explicitly stating design intent, prevents unintended subclassing, and can offer minor compiler optimizations. Aligns with "Simplicity" and "Coding Standards". (Elevated to High as an early good practice).
-    - **Expected Outcome**: Application-specific classes not designed for inheritance are marked `final`.
-    - **Dependencies**: Initial class definitions (e.g., AppDelegate, SceneDelegate)
+- **[Refactor] [PHILOSOPHY-HIGH]: Apply `final` Keyword to Non-Inheritable Application Classes**
+  - **Complexity**: Small
+  - **Rationale**: Improves code clarity by explicitly stating design intent, prevents unintended subclassing, and can offer minor compiler optimizations. Aligns with "Simplicity" and "Coding Standards".
+  - **Expected Outcome**: Application-specific classes not designed for inheritance are marked `final`.
+  - **Dependencies**: Initial class definitions (e.g., AppDelegate, SceneDelegate)
 
 ### Architecture & Design
 - **[Refactor] [PHILOSOPHY-HIGH]: Define, Document, and Apply Initial Architectural Pattern (e.g., MVVM-C, TCA)**
   - **Complexity**: Large
-  - **Rationale**: Establishes a clear, scalable, and testable architecture from the outset, promoting separation of concerns, modularity, and maintainability. This is critical for the long-term health and evolution of the application.
+  - **Rationale**: Establishes a clear, scalable, and testable architecture from the outset, promoting separation of concerns, modularity, and maintainability. This is critical for the long-term health and evolution of the application and enables consistent implementation of MVP features.
   - **Expected Outcome**: A standard iOS architectural pattern selected and documented. Initial components (e.g., `ContentView`, app setup) refactored to align. New architecture-specific folders/files created.
   - **Dependencies**: None
 
@@ -53,25 +53,13 @@
   - **Expected Outcome**: A consistent approach for dependency injection (e.g., constructor injection) implemented and used in core application components and ViewModels.
   - **Dependencies**: [PHILOSOPHY-HIGH] Define Architectural Pattern
 
-- **[Refactor] [PHILOSOPHY-LOW]: Clarify and Standardize Application Entry Point (AppDelegate vs. SwiftUI App)**
-    - **Complexity**: Small
-    - **Rationale**: Ensures a clear, unambiguous application launch and lifecycle management structure, aligning with "Simplicity" and "Explicit is Better than Implicit". (Elevated to High for foundational clarity).
-    - **Expected Outcome**: A single, primary approach for app lifecycle management chosen and implemented; redundant setup removed or reconciled; decision documented.
-    - **Dependencies**: None
+- **[Refactor] [PHILOSOPHY-HIGH]: Clarify and Standardize Application Entry Point (AppDelegate vs. SwiftUI App)**
+  - **Complexity**: Small
+  - **Rationale**: Ensures a clear, unambiguous application launch and lifecycle management structure, aligning with "Simplicity" and "Explicit is Better than Implicit".
+  - **Expected Outcome**: A single, primary approach for app lifecycle management chosen and implemented; redundant setup removed or reconciled; decision documented.
+  - **Dependencies**: None
 
 ### CI/CD & Automation
-- **[Chore] [PHILOSOPHY-HIGH]: Implement Core CI Pipeline (Lint, Format, Build, Test)**
-  - **Complexity**: Medium
-  - **Rationale**: Automates quality assurance, providing rapid feedback on code changes, preventing regressions, and ensuring standards are met before merging. Aligns with "Automate Everything" and "Quality Gates".
-  - **Expected Outcome**: A Continuous Integration pipeline (e.g., GitHub Actions) configured to run linters, formatters, build the application, and execute tests on every push and pull request.
-  - **Dependencies**: [PHILOSOPHY-CRITICAL] Setup SwiftLint, [PHILOSOPHY-CRITICAL] Setup Code Formatter, [PHILOSOPHY-CRITICAL] Create Test Targets
-
-- **[Chore] [PHILOSOPHY-HIGH]: Implement Pre-commit Hooks for Local Linting and Formatting**
-  - **Complexity**: Medium
-  - **Rationale**: Enforces code quality checks locally before code enters the repository, improving developer workflow and code hygiene. Aligns with "Automate Everything" and "Quality Gates".
-  - **Expected Outcome**: Local pre-commit hooks (e.g., using `pre-commit` framework) set up to automatically run SwiftLint and the chosen code formatter.
-  - **Dependencies**: [PHILOSOPHY-CRITICAL] Setup SwiftLint, [PHILOSOPHY-CRITICAL] Setup Code Formatter
-
 - **[Strategy] [PHILOSOPHY-CRITICAL]: Implement Multi-Layered Build and Runtime Integrity Approach**
   - **Complexity**: Medium
   - **Rationale**: A comprehensive strategy is essential to ensure code changes don't break the build or runtime functionality. This multi-tiered approach provides defense in depth, catching issues at different stages of development.
@@ -83,6 +71,18 @@
     - **Fastlane Integration**: For standardized workflows (medium priority)
     - **Enhanced xcconfig Management**: For more robust build configuration safety (medium priority)
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Setup SwiftLint, [PHILOSOPHY-CRITICAL] Setup Code Formatter, [PHILOSOPHY-CRITICAL] Create Test Targets
+
+- **[Chore] [PHILOSOPHY-HIGH]: Implement Core CI Pipeline (Lint, Format, Build, Test)**
+  - **Complexity**: Medium
+  - **Rationale**: Automates quality assurance, providing rapid feedback on code changes, preventing regressions, and ensuring standards are met before merging. Aligns with "Automate Everything" and "Quality Gates".
+  - **Expected Outcome**: A Continuous Integration pipeline (e.g., GitHub Actions) configured to run linters, formatters, build the application, and execute tests on every push and pull request.
+  - **Dependencies**: [PHILOSOPHY-CRITICAL] Setup SwiftLint, [PHILOSOPHY-CRITICAL] Setup Code Formatter, [PHILOSOPHY-CRITICAL] Create Test Targets
+
+- **[Chore] [PHILOSOPHY-HIGH]: Implement Pre-commit Hooks for Local Linting and Formatting**
+  - **Complexity**: Medium
+  - **Rationale**: Enforces code quality checks locally before code enters the repository, improving developer workflow and code hygiene. Aligns with "Automate Everything" and "Quality Gates".
+  - **Expected Outcome**: Local pre-commit hooks (e.g., using `pre-commit` framework) set up to automatically run SwiftLint and the chosen code formatter.
+  - **Dependencies**: [PHILOSOPHY-CRITICAL] Setup SwiftLint, [PHILOSOPHY-CRITICAL] Setup Code Formatter
 
 ### Testing & Quality Assurance
 - **[Chore] [PHILOSOPHY-CRITICAL]: Create Initial Unit and UI Test Targets with Basic Structure**
@@ -118,9 +118,9 @@
   - **Expected Outcome**: A `README.md` file at the project root containing project overview, setup instructions, testing guide, chosen architecture summary, and contribution guidelines.
   - **Dependencies**: [PHILOSOPHY-HIGH] Define Architectural Pattern (for architecture summary)
 
-## MVP Features
+## MVP Implementation Plan
 
-### MVP - Foundational API & Data Models
+### Foundational API & Data Models
 - **[Chore] [PHILOSOPHY-CRITICAL]: Define Core Data Models (User, Memo, Card) with Codable Conformance**
   - **Complexity**: Medium
   - **Rationale**: Defines the Swift structures for data exchanged with the backend API and used within the app, ensuring type safety and easy serialization/deserialization. Essential for API client and feature implementation. Aligns with Swift Persistence standards (Codable).
@@ -133,111 +133,111 @@
   - **Expected Outcome**: A Swift API client service (e.g., `ScryAPIService`) using `URLSession` and `async/await`. Includes methods for all MVP endpoints (`/auth/register`, `/auth/login`, `/memos`, `/cards/next`, `/cards/{id}/answer`, `PUT /cards/{id}`, `DELETE /cards/{id}`, `POST /cards/{id}/postpone`). Handles `Codable` mapping, basic HTTP error handling, and HTTPS enforcement.
   - **Dependencies**: [PHILOSOPHY-CRITICAL]: Define Core Data Models, [PHILOSOPHY-HIGH] Define Architectural Pattern
 
-### MVP - User Authentication (FR1)
+### User Authentication (FR1)
 - **[Feature] [PHILOSOPHY-CRITICAL]: Implement User Signup Flow (Email/Password)**
   - **Complexity**: Medium
-  - **Rationale**: Enables new users to create accounts, a prerequisite for using the application's core features (FR1).
+  - **Rationale**: Enables new users to create accounts, a prerequisite for using the application's core features (FR1). Without authentication, user data cannot be persisted or retrieved from the backend.
   - **Expected Outcome**: Functional SwiftUI screens for email/password signup. ViewModel logic for input validation and interaction with the API client for the `POST /auth/register` endpoint. Secure handling of credentials. User session initiated upon successful signup. Basic error messages displayed to the user.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Implement API Client Layer, [PHILOSOPHY-CRITICAL] Define Core Data Models (User), [PHILOSOPHY-HIGH] Define Architectural Pattern
 
 - **[Feature] [PHILOSOPHY-CRITICAL]: Implement User Login Flow (Email/Password)**
   - **Complexity**: Medium
-  - **Rationale**: Allows existing users to access their accounts and data (FR1).
+  - **Rationale**: Allows existing users to access their accounts and data (FR1), essential for a personalized experience and core to the authentication flow.
   - **Expected Outcome**: Functional SwiftUI screens for email/password login. ViewModel logic for input validation and interaction with the API client for the `POST /auth/login` endpoint. Secure handling of credentials. User session initiated upon successful login. Basic error messages displayed to the user.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Implement API Client Layer, [PHILOSOPHY-CRITICAL] Define Core Data Models (User), [PHILOSOPHY-HIGH] Define Architectural Pattern
 
 - **[Chore] [PHILOSOPHY-CRITICAL]: Implement Secure Token Storage (Keychain) and Session Management**
   - **Complexity**: Medium
-  - **Rationale**: Securely stores authentication tokens to maintain user sessions across app launches, aligning with NFR6 (Security) and Swift Persistence standards (Keychain).
+  - **Rationale**: Securely stores authentication tokens to maintain user sessions across app launches, aligning with NFR6 (Security) and Swift Persistence standards (Keychain). Essential for a seamless user experience.
   - **Expected Outcome**: Authentication tokens (e.g., JWT) are securely stored in the device Keychain upon successful login/signup. API client automatically includes the token in authenticated requests. Session state (logged-in/out) is managed within the app, allowing automatic login if a valid token exists.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Implement User Login Flow, [PHILOSOPHY-CRITICAL] Implement User Signup Flow
 
-### MVP - Memo Input & Card Generation (FR2, FR3)
+### Memo Input & Card Generation (FR2, FR3)
 - **[Feature] [PHILOSOPHY-CRITICAL]: Implement Memo Input UI (SwiftUI Modal)**
   - **Complexity**: Medium
-  - **Rationale**: Allows users to input Memos, which are the source for AI card generation (FR2). This is a primary interaction for content creation and must be low-friction.
-  - **Expected Outcome**: A SwiftUI modal view (e.g., `MemoInputView`) presented from the Review Screen. Includes a multi-line `TextEditor` for memo input and a "Submit" button. UI is minimalist and easy to use.
+  - **Rationale**: Allows users to input Memos, which are the source for AI card generation (FR2). This is a primary interaction for content creation and must be low-friction to align with Scry's core principle of minimal friction.
+  - **Expected Outcome**: A SwiftUI modal view (e.g., `MemoInputView`) presented from the Review Screen. Includes a multi-line `TextEditor` for memo input and a "Submit" button. UI is minimalist and easy to use, following the design principles of simplicity and focus on content.
   - **Dependencies**: [PHILOSOPHY-HIGH] Define Architectural Pattern, [Feature] [PHILOSOPHY-CRITICAL] Implement Core Review Screen Structure (to present from)
 
 - **[Feature] [PHILOSOPHY-CRITICAL]: Implement Memo Submission to Backend**
   - **Complexity**: Medium
-  - **Rationale**: Sends user-created Memos to the backend for asynchronous card generation (FR2, FR3), enabling the core value proposition.
-  - **Expected Outcome**: The `MemoInputView`'s ViewModel submits Memo text to the `POST /memos` endpoint via the API client. Handles the HTTP 202 Accepted response. UI provides feedback on submission (e.g., dismisses modal, subtle confirmation). User is returned to the Review Flow.
+  - **Rationale**: Sends user-created Memos to the backend for asynchronous card generation (FR2, FR3), enabling the core value proposition of Scry's AI-powered card creation.
+  - **Expected Outcome**: The `MemoInputView`'s ViewModel submits Memo text to the `POST /memos` endpoint via the API client. Handles the HTTP 202 Accepted response. UI provides feedback on submission (e.g., dismisses modal, subtle confirmation). User is returned to the Review Flow immediately after submission, maintaining flow.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Implement API Client Layer, [PHILOSOPHY-CRITICAL] Define Core Data Models (Memo), [Feature] [PHILOSOPHY-CRITICAL] Implement Memo Input UI
 
-### MVP - Core Card Review Experience (FR4, FR5, FR6)
+### Core Card Review Experience (FR4, FR5, FR6)
 - **[Feature] [PHILOSOPHY-CRITICAL]: Implement Core Review Screen Structure (`ReviewScreen`)**
   - **Complexity**: Large
-  - **Rationale**: Provides the main interface for the continuous review flow (FR4), displaying one card at a time. This is the central user experience of the MVP.
-  - **Expected Outcome**: A main SwiftUI view (`ReviewScreen`) that fetches the next card via `GET /cards/next` upon appearing or after a card is answered. Displays a single `CardView` (see below). Manages loading states and empty states (no cards to review).
+  - **Rationale**: Provides the main interface for the continuous review flow (FR4), displaying one card at a time. This is the central user experience of the MVP and embodiment of Scry's "Seamless Review" vision.
+  - **Expected Outcome**: A main SwiftUI view (`ReviewScreen`) that fetches the next card via `GET /cards/next` upon appearing or after a card is answered. Displays a single `CardView` (see below). Manages loading states and empty states (no cards to review) with user-friendly UI. Opens directly on app launch, implementing the "always reviewing" principle.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Implement API Client Layer, [PHILOSOPHY-CRITICAL] Secure Token Storage and Session Management, [PHILOSOPHY-HIGH] Define Architectural Pattern
 
 - **[Feature] [PHILOSOPHY-CRITICAL]: Implement Multiple Choice Card View (SwiftUI Component)**
   - **Complexity**: Medium
-  - **Rationale**: Creates the visual representation of a multiple-choice card and its interactive elements (FR5).
-  - **Expected Outcome**: A reusable SwiftUI view (`MCCardView`) capable of displaying a question, a list of choices (buttons or tappable rows).
+  - **Rationale**: Creates the visual representation of a multiple-choice card and its interactive elements (FR5). This component is the primary interface for user learning and recall.
+  - **Expected Outcome**: A reusable SwiftUI view (`MCCardView`) capable of displaying a question, a list of choices (buttons or tappable rows). Design is clean, accessible, and focused on readability and ease of interaction.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Define Core Data Models (Card)
 
 - **[Feature] [PHILOSOPHY-CRITICAL]: Implement MC Card Interaction (Answering & Feedback)**
   - **Complexity**: Medium
-  - **Rationale**: Enables users to answer MC questions, receive immediate feedback, and trigger SRS updates on the backend (FR5, FR6).
+  - **Rationale**: Enables users to answer MC questions, receive immediate feedback, and trigger SRS updates on the backend (FR5, FR6). This is the core interaction loop for active recall practice.
   - **Expected Outcome**: In `MCCardView`, tapping a choice sends the answer to the `POST /cards/{id}/answer` endpoint via the API client. UI provides immediate visual feedback (e.g., highlighting correct/incorrect choice). After feedback, triggers transition to the next card in `ReviewScreen`.
   - **Dependencies**: [Feature] [PHILOSOPHY-CRITICAL] Implement Multiple Choice Card View, [PHILOSOPHY-CRITICAL] Implement API Client Layer, [Feature] [PHILOSOPHY-CRITICAL] Implement Core Review Screen Structure
 
 - **[Enhancement] [PHILOSOPHY-HIGH]: Implement Smooth Card Transition Animation**
   - **Complexity**: Medium
-  - **Rationale**: Enhances user experience (NFR1 - Performance, NFR5 - Usability) by providing fluid and engaging feedback when moving between cards in the Review Flow.
-  - **Expected Outcome**: A polished, performant animation (e.g., slide, fade) when transitioning from one card to the next. Transitions should be <300ms and maintain 60fps.
+  - **Rationale**: Enhances user experience (NFR1 - Performance, NFR5 - Usability) by providing fluid and engaging feedback when moving between cards in the Review Flow. Aligns with Scry's "Smooth UX" core principle.
+  - **Expected Outcome**: A polished, performant animation (e.g., slide, fade) when transitioning from one card to the next. Transitions should be <300ms and maintain 60fps as specified in NFR1.
   - **Dependencies**: [Feature] [PHILOSOPHY-CRITICAL] Implement Core Review Screen Structure
 
-### MVP - Card Management Actions (FR7, FR8, FR9)
+### Card Management Actions (FR7, FR8, FR9)
 - **[Feature] [PHILOSOPHY-HIGH]: Implement Card Editing UI and Logic**
   - **Complexity**: Medium
-  - **Rationale**: Allows users to correct AI-generated content or refine their cards (FR7), improving card quality and user trust.
+  - **Rationale**: Allows users to correct AI-generated content or refine their cards (FR7), improving card quality and user trust. Critical for mitigating the "Black Box" generation risk identified in the MVP plan.
   - **Expected Outcome**: A UI element (e.g., button/menu item) on the `MCCardView` or `ReviewScreen` to trigger an editing interface (e.g., modal sheet). The interface allows modifying the card's question and choices. Saving updates the card via the API client (`PUT /cards/{id}`).
   - **Dependencies**: [Feature] [PHILOSOPHY-CRITICAL] Implement Multiple Choice Card View, [PHILOSOPHY-CRITICAL] Implement API Client Layer
 
 - **[Feature] [PHILOSOPHY-HIGH]: Implement Card Deletion UI and Logic**
   - **Complexity**: Small
-  - **Rationale**: Allows users to remove unwanted or incorrect cards (FR8), giving them control over their learning material.
+  - **Rationale**: Allows users to remove unwanted or incorrect cards (FR8), giving them control over their learning material. Essential for handling low-quality AI generations.
   - **Expected Outcome**: A UI element on the `MCCardView` or `ReviewScreen` to trigger deletion. A confirmation prompt is displayed. Confirming deletion sends a `DELETE /cards/{id}` request via the API client and removes the card from the local review sequence, transitioning to the next card.
   - **Dependencies**: [Feature] [PHILOSOPHY-CRITICAL] Implement Multiple Choice Card View, [PHILOSOPHY-CRITICAL] Implement API Client Layer
 
 - **[Feature] [PHILOSOPHY-HIGH]: Implement Card Postponing UI and Logic**
   - **Complexity**: Small
-  - **Rationale**: Provides a simple way for users to skip a card they don't want to review immediately (FR9), without deleting it.
+  - **Rationale**: Provides a simple way for users to skip a card they don't want to review immediately (FR9), without deleting it. Enhances user control over the review flow.
   - **Expected Outcome**: A UI element on the `MCCardView` or `ReviewScreen` to trigger postponement. Sends a `POST /cards/{id}/postpone` request via the API client. The card is removed from the current review sequence, and the app transitions to the next card.
   - **Dependencies**: [Feature] [PHILOSOPHY-CRITICAL] Implement Multiple Choice Card View, [PHILOSOPHY-CRITICAL] Implement API Client Layer
 
-### MVP - Cross-Cutting Concerns
+### Cross-Cutting Concerns
 - **[Enhancement] [PHILOSOPHY-CRITICAL]: Implement Comprehensive Accessibility (WCAG 2.1 AA) for MVP User Flows**
   - **Complexity**: Medium
-  - **Rationale**: Ensures the application is usable by people with disabilities, aligning with Scry's vision of a frictionless experience for all. This is critical for a quality user experience.
+  - **Rationale**: Ensures the application is usable by people with disabilities, aligning with Scry's vision of a frictionless experience for all. This is critical for a quality user experience and inclusive product.
   - **Expected Outcome**: All user-facing UI elements in the MVP flows (Login, Signup, Memo Input, Card Review, Card Actions) are accessible. This includes proper VoiceOver labels, hints, traits, dynamic type support, sufficient color contrast, and keyboard navigation where applicable.
   - **Dependencies**: All MVP Feature UI items.
 
 - **[Enhancement] [PHILOSOPHY-HIGH]: Implement User-Facing API Error Handling for MVP Flows**
   - **Complexity**: Medium
-  - **Rationale**: Ensures the app handles network and API errors gracefully, providing informative feedback to the user and preventing a broken experience.
-  - **Expected Outcome**: The API client translates HTTP/network errors into meaningful error types. UI layers handle these errors by displaying user-friendly alerts or messages (e.g., "Could not log in. Please check your connection and credentials."). Key errors are logged.
+  - **Rationale**: Ensures the app handles network and API errors gracefully (NFR4 - Reliability), providing informative feedback to the user and preventing a broken experience.
+  - **Expected Outcome**: The API client translates HTTP/network errors into meaningful error types. UI layers handle these errors by displaying user-friendly alerts or messages (e.g., "Could not log in. Please check your connection and credentials."). Key errors are logged using the structured logging system.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Implement API Client Layer, All MVP Feature items involving API calls.
 
-### MVP - Testing
+### MVP Testing
 - **[Task] [PHILOSOPHY-HIGH]: Write Unit Tests for Authentication Logic/ViewModels**
   - **Complexity**: Medium
-  - **Rationale**: Ensure the core user authentication flows (signup, login, session management) are reliable and testable. Validates core business logic independently from UI.
+  - **Rationale**: Ensure the core user authentication flows (signup, login, session management) are reliable and testable. Validates core business logic independently from UI, aligning with the "Design for Testability" principle.
   - **Expected Outcome**: Comprehensive unit tests for authentication ViewModels, covering successful login/signup, input validation, error handling, session management, and edge cases.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Create Initial Unit and UI Test Targets, [PHILOSOPHY-CRITICAL] Implement User Login Flow, [PHILOSOPHY-CRITICAL] Implement User Signup Flow
 
 - **[Task] [PHILOSOPHY-HIGH]: Write Unit Tests for Card Review Logic/ViewModels**
   - **Complexity**: Medium
-  - **Rationale**: Ensure the critical card review functionality (fetching, answering, transitions) works correctly and reliably.
+  - **Rationale**: Ensure the critical card review functionality (fetching, answering, transitions) works correctly and reliably. This tests the core user experience functionality.
   - **Expected Outcome**: Comprehensive unit tests for Review flow ViewModels, covering card fetching, answer submission, SRS state transitions, and error handling.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Create Initial Unit and UI Test Targets, [Feature] [PHILOSOPHY-CRITICAL] Implement Core Review Screen Structure, [Feature] [PHILOSOPHY-CRITICAL] Implement MC Card Interaction
 
 - **[Task] [PHILOSOPHY-HIGH]: Implement Basic UI Tests for Core User Flows**
   - **Complexity**: Medium
-  - **Rationale**: Validate that critical end-to-end user journeys function correctly from a UI perspective.
+  - **Rationale**: Validate that critical end-to-end user journeys function correctly from a UI perspective, ensuring a smooth user experience.
   - **Expected Outcome**: UI tests that simulate key user flows: login, signup, viewing a card, answering a card, adding a memo. These tests should run on a simulator and verify the correct UI elements appear and interact properly.
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Create Initial Unit and UI Test Targets, All MVP Feature UI items
 
@@ -257,11 +257,11 @@
   - **Expected Outcome**: Fastlane initialized in the project with initial lanes for common local development tasks (e.g., building, testing).
   - **Dependencies**: [PHILOSOPHY-CRITICAL] Create Test Targets
 
-- **[Chore] [PHILOSOPHY-LOW]: Setup Automated Changelog Generation from Conventional Commits**
-    - **Complexity**: Medium
-    - **Rationale**: Automates and standardizes changelog creation, simplifying release notes preparation and communication of changes. Aligns with "Automate Everything" and "Semantic Versioning". (Elevated to Medium for its process improvement value).
-    - **Expected Outcome**: Tooling implemented to automatically generate or update a `CHANGELOG.md` file based on Conventional Commit history.
-    - **Dependencies**: [PHILOSOPHY-MEDIUM] Adopt Conventional Commits
+- **[Chore] [PHILOSOPHY-MEDIUM]: Setup Automated Changelog Generation from Conventional Commits**
+  - **Complexity**: Medium
+  - **Rationale**: Automates and standardizes changelog creation, simplifying release notes preparation and communication of changes. Aligns with "Automate Everything" and "Semantic Versioning".
+  - **Expected Outcome**: Tooling implemented to automatically generate or update a `CHANGELOG.md` file based on Conventional Commit history.
+  - **Dependencies**: [PHILOSOPHY-MEDIUM] Adopt Conventional Commits
 
 ### Testing & Quality Assurance
 - **[Enhancement] [PHILOSOPHY-MEDIUM]: Integrate Test Coverage Reporting into CI Pipeline**
@@ -303,9 +303,9 @@
   - **Expected Outcome**: The Conventional Commits specification adopted for all commit messages, with guidelines documented in `CONTRIBUTING.md`.
   - **Dependencies**: None
 
-- **[Documentation] [PHILOSOPHY-LOW]: Document UI Framework Choice and Interoperability Guidelines**
+- **[Documentation] [PHILOSOPHY-MEDIUM]: Document UI Framework Choice and Interoperability Guidelines**
   - **Complexity**: Small
-  - **Rationale**: Provides clear guidance on UI development choices and standards for the team, ensuring consistency. Aligns with "Documentation Approach" and "UI Development". (Elevated to Medium for early team alignment).
+  - **Rationale**: Provides clear guidance on UI development choices and standards for the team, ensuring consistency. Aligns with "Documentation Approach" and "UI Development".
   - **Expected Outcome**: SwiftUI formally documented as the primary UI framework, with basic guidelines for UIKit interoperability if anticipated.
   - **Dependencies**: None
 
@@ -316,6 +316,19 @@
   - **Expected Outcome**: Essential accessibility properties (e.g., `accessibilityLabel`, `accessibilityHint`, `accessibilityTraits`) added to initial UI elements.
   - **Dependencies**: Initial UI elements exist (e.g., in `ContentView.swift`)
 
+### Enhanced User Experience
+- **[Enhancement] [PHILOSOPHY-MEDIUM]: Implement Empty State and First-Run Guidance**
+  - **Complexity**: Small
+  - **Rationale**: Improves onboarding and engagement by clearly guiding users to add their first Memo when review queue is empty. Addresses the "Cold Start" risk identified in the MVP plan.
+  - **Expected Outcome**: On empty queue, display friendly message and prominent "Add Memo" action. Potentially pre-populate with sample Card(s) for demonstration.
+  - **Dependencies**: [PHILOSOPHY-CRITICAL] Implement Core Review Screen Structure
+
+- **[Enhancement] [PHILOSOPHY-MEDIUM]: Implement State Management for Review Queue and In-Flight Operations**
+  - **Complexity**: Medium
+  - **Rationale**: Ensures smooth UI updates and consistency as Cards are added, generated, edited, or deleted, and prevents race conditions or stale UI. Delivers on the "Smooth UX" principle.
+  - **Expected Outcome**: Observable state for current queue, in-flight requests, and optimistic updates. Properly synchronized with backend.
+  - **Dependencies**: [PHILOSOPHY-CRITICAL] Define Core Data Models, [PHILOSOPHY-CRITICAL] Implement Core Review Screen Structure
+
 ## Low Priority
 
 ### Documentation & Knowledge Sharing
@@ -323,7 +336,20 @@
   - **Complexity**: Small
   - **Rationale**: Improves code navigability and understanding for developers, and enables future generation of API documentation. Aligns with "Documentation (Why vs How, Self-documenting code)".
   - **Expected Outcome**: Swift documentation comments (`///`) added to public structs, classes, protocols, methods, and properties in key components.
-  - **Dependencies**: Key components are defined.
+  - **Dependencies**: Key components are defined
+
+### UX Polish
+- **[Enhancement] [PHILOSOPHY-LOW]: Add Haptic Feedback for Key Actions**
+  - **Complexity**: Small
+  - **Rationale**: Increases delight and tactile response for answering, correct/incorrect feedback, and other important actions.
+  - **Expected Outcome**: Appropriate haptic events for answer selection, memo submission, card edit/delete/postpone.
+  - **Dependencies**: [PHILOSOPHY-CRITICAL] Implement Multiple Choice Card View
+
+- **[Enhancement] [PHILOSOPHY-LOW]: Implement Light/Dark Mode Support Throughout UI**
+  - **Complexity**: Small
+  - **Rationale**: Adapts to user/device preferences, improving usability and comfort.
+  - **Expected Outcome**: All screens and components render correctly in both light and dark modes.
+  - **Dependencies**: [PHILOSOPHY-CRITICAL] Implement Multiple Choice Card View
 
 ## Future Considerations
 
@@ -332,36 +358,36 @@
   - **Complexity**: Medium
   - **Rationale**: Proactively assess if more advanced state management (e.g., TCA if not initially chosen, or other reactive frameworks) becomes necessary as complexity grows, ensuring scalability and maintainability.
   - **Expected Outcome**: A document or PoC evaluating alternative state management solutions against project needs.
-  - **Dependencies**: Experience with initial architectural pattern.
+  - **Dependencies**: Experience with initial architectural pattern
 
 - **[Enhancement]**: Implement Modularization Strategy (e.g., Swift Packages for Features)
   - **Complexity**: Complex
   - **Rationale**: Further enhance build times, encapsulation, and team scalability by breaking down the app into independent Swift Packages per feature or layer.
   - **Expected Outcome**: Key features or layers extracted into local Swift Packages.
-  - **Dependencies**: [PHILOSOPHY-MEDIUM] Refactor Project Structure for Feature-Based Grouping.
+  - **Dependencies**: [PHILOSOPHY-MEDIUM] Refactor Project Structure for Feature-Based Grouping
 
 ### Operational Excellence
 - **[Enhancement]**: Set up Performance Monitoring and Alerting
   - **Complexity**: Medium
   - **Rationale**: Proactively identify and address performance bottlenecks (e.g., app startup, screen transitions, network requests) to ensure a smooth user experience.
   - **Expected Outcome**: Integration of a performance monitoring tool (e.g., Firebase Performance, MetricKit) with dashboards and alerts for key metrics.
-  - **Dependencies**: Core application features implemented.
+  - **Dependencies**: Core application features implemented
 
 - **[Enhancement]**: Implement Comprehensive Analytics Strategy
   - **Complexity**: Medium
   - **Rationale**: To gain insights into user behavior, feature adoption, and identify areas for improvement, driving data-informed product decisions.
   - **Expected Outcome**: An analytics SDK integrated (e.g., Firebase Analytics, Mixpanel) with key user events tracked.
-  - **Dependencies**: Core application features implemented.
+  - **Dependencies**: Core application features implemented
 
-### Business & Value Delivery (Placeholders for ScryiOS specific features)
-- **[Feature]**: Define and Implement Core "Scrying" Feature - MVP
+### Vision Alignment & Expansion
+- **[Feature]**: Implement Knowledge Graph and Concept Visualization (Post-MVP)
   - **Complexity**: Complex
-  - **Rationale**: To deliver the primary unique value proposition of the "ScryiOS" application. (Specifics of "scrying" TBD based on product vision).
-  - **Expected Outcome**: A minimal viable version of the core application feature is designed, implemented, and testable.
-  - **Dependencies**: All High/Medium priority foundational items.
+  - **Rationale**: Aligns with aspirational vision of Scry as a personal knowledge graph and insight engine. Deepens user engagement and enables semantic exploration.
+  - **Expected Outcome**: Visual or navigable representation of user's knowledge graph; ability to explore connections, gaps, and learning progress.
+  - **Dependencies**: Core MVP shipped, Cards and Memos data model established
 
-- **[Feature]**: User Account Management (Registration, Login, Profile)
+- **[Feature]**: Integrate with Other Apps and Capture Sources (Post-MVP)
   - **Complexity**: Complex
-  - **Rationale**: To enable personalized experiences, data persistence, and potential future premium features.
-  - **Expected Outcome**: Secure user registration, login, and basic profile management functionality.
-  - **Dependencies**: Backend infrastructure, [PHILOSOPHY-MEDIUM] Define and Document Strategy for Managing Secrets.
+  - **Rationale**: Delivers on "Effortless Capture" and "Integrations" from Vision. Broadens Scry's utility.
+  - **Expected Outcome**: Ability to import Memos from images (OCR), web pages (Safari extension), or other note-taking apps. Unified capture pipeline.
+  - **Dependencies**: Core MVP shipped, Memo input abstraction refactored
