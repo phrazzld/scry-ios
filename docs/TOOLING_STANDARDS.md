@@ -4,8 +4,10 @@ This document outlines the standard tooling versions for the ScryiOS project to 
 
 ## Xcode
 
-- **Version:** 16.3 or later (as specified in `README.md` and to be enforced by an `.xcode-version` file in a subsequent task).
+- **Version:** 16.3 (as specified in `.xcode-version` file in project root)
+- **Configuration File (Single Source of Truth):** `.xcode-version`
 - **Rationale:** Ensures compatibility with the specified Swift version and latest iOS SDK features.
+- **Enforcement:** The `.xcode-version` file is used by tools like `xcenv` and CI systems to automatically select the correct Xcode version, reducing "works on my machine" issues.
 
 ## Swift
 

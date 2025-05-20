@@ -6,10 +6,11 @@ Mobile client for Scry on iOS.
 
 ### Requirements
 
-- Xcode 16.3+
+- Xcode 16.3 (as specified in `.xcode-version`)
 - Swift 6.1
 - iOS 15.0+
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`)
+- [xcenv](https://github.com/xcenv/xcenv) (recommended for Xcode version management)
 
 ### Getting Started
 
@@ -66,3 +67,7 @@ This approach allows each developer to use their own Apple Developer Team ID wit
 - If you encounter code signing issues, ensure your Apple Developer Team ID is correctly set in `Config/DeveloperSpecific.xcconfig`.
 - If Xcode doesn't recognize your device, try restarting both Xcode and your device.
 - After making changes to any `.xcconfig` file or `project.yml`, run `xcodegen generate` again to update the Xcode project.
+- If using a different Xcode version than specified in `.xcode-version`, consider:
+  - Installing the required version via the App Store or Apple Developer portal
+  - Using `xcenv` to automatically switch to the correct version: `brew install xcenv && xcenv install`
+  - Setting the Xcode version manually: `sudo xcode-select -s /Applications/Xcode-16.3.app`
