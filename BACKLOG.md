@@ -3,7 +3,7 @@
 ## High Priority
 
 ### Foundational Setup & Tooling
-- **[Chore] [PHILOSOPHY-CRITICAL]: Standardize and Update to Current Stable Swift Version**
+- [x] **[Chore] [PHILOSOPHY-CRITICAL]: Standardize and Update to Current Stable Swift Version**
   - **Complexity**: Small
   - **Rationale**: Ensures the project leverages modern Swift features, benefits from compiler improvements, and maintains better security and compatibility, aligning with "Tooling and Environment" and "Coding Standards". This is crucial for long-term project health and developer efficiency.
   - **Expected Outcome**: Project configured to use the latest stable Swift version supported by the team's primary Xcode, with this version documented.
@@ -15,7 +15,7 @@
   - **Expected Outcome**: Xcode project's build settings correctly configured with a valid Apple Development Team ID and appropriate provisioning for development builds.
   - **Dependencies**: None
 
-- **[Chore] [PHILOSOPHY-LOW]: Add `.xcode-version` File for Xcode Version Consistency**
+- [x] **[Chore] [PHILOSOPHY-LOW]: Add `.xcode-version` File for Xcode Version Consistency**
   - **Complexity**: Small
   - **Rationale**: Reduces "works on my machine" issues and ensures a consistent development environment for all team members and CI. Aligns with "Tooling and Environment". (Elevated to High due to its foundational nature for team consistency).
   - **Expected Outcome**: An `.xcode-version` file in the project root specifying the exact Xcode version to be used.
