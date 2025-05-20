@@ -6,7 +6,8 @@ Mobile client for Scry on iOS.
 
 ### Requirements
 
-- Xcode 15.0+
+- Xcode 16.3+
+- Swift 6.1
 - iOS 15.0+
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`)
 
