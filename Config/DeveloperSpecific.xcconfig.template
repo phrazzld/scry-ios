@@ -1,0 +1,12 @@
+// Config/DeveloperSpecific.xcconfig.template
+//
+// **DO NOT COMMIT DeveloperSpecific.xcconfig TO VERSION CONTROL.**
+//
+// 1. Copy this file to "Config/DeveloperSpecific.xcconfig".
+// 2. Replace "YOUR_APPLE_DEVELOPMENT_TEAM_ID" with your actual Apple Development Team ID.
+//    You can find this ID on the Apple Developer Portal (developer.apple.com/account)
+//    under "Membership Details" -> "Team ID".
+//
+// This file provides your local Development Team ID for signing development builds.
+
+DEVELOPMENT_TEAM = YOUR_APPLE_DEVELOPMENT_TEAM_ID

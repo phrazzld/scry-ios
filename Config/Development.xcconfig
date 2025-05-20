@@ -1,0 +1,20 @@
+// Config/Development.xcconfig
+#include "Base.xcconfig"
+#include? "DeveloperSpecific.xcconfig" // Include if exists, allows local override
+
+PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_BUNDLE_IDENTIFIER_BASE).dev
+APP_DISPLAY_NAME = ScryiOS Dev
+
+// Default Development Team - will be overridden by DeveloperSpecific.xcconfig
+DEVELOPMENT_TEAM = YOUR_TEAM_ID_PLACEHOLDER_SEE_README
+
+CODE_SIGN_STYLE = Automatic
+CODE_SIGN_IDENTITY = Apple Development
+PROVISIONING_PROFILE_SPECIFIER =
+
+// Debug-specific settings
+DEBUG_INFORMATION_FORMAT = dwarf
+ENABLE_TESTABILITY = YES
+GCC_OPTIMIZATION_LEVEL = 0
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE

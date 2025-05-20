@@ -1,0 +1,18 @@
+// Config/Distribution.xcconfig
+#include "Base.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_BUNDLE_IDENTIFIER_BASE)
+APP_DISPLAY_NAME = ScryiOS
+
+// Team ID and signing for distribution will be handled by CI or specific release procedures.
+// DEVELOPMENT_TEAM = <CI_INJECTED_DISTRIBUTION_TEAM_ID>
+CODE_SIGN_STYLE = Manual // Typically Manual for App Store/AdHoc
+// CODE_SIGN_IDENTITY = Apple Distribution
+// PROVISIONING_PROFILE_SPECIFIER = <SPECIFIC_DISTRIBUTION_PROFILE_NAME_OR_UUID>
+
+// Release-specific settings
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
+ENABLE_NS_ASSERTIONS = NO
+MTL_ENABLE_DEBUG_INFO = NO
+SWIFT_COMPILATION_MODE = wholemodule
+SWIFT_OPTIMIZATION_LEVEL = -O
