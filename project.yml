@@ -1,0 +1,18 @@
+name: ScryiOS
+options:
+  bundleIdPrefix: com.scry
+  deploymentTarget:
+    iOS: 15.0
+
+targets:
+  ScryiOS:
+    type: application
+    platform: iOS
+    sources: 
+      - path: ScryiOS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.scry.ScryiOS
+        INFOPLIST_FILE: ScryiOS/Resources/Info.plist
+        CODE_SIGN_IDENTITY: "iPhone Developer"
+        DEVELOPMENT_TEAM: ""
