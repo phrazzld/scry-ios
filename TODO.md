@@ -149,7 +149,7 @@
         1. After setup, intentionally stage a file with a fixable lint violation and attempt to commit; verify the hook runs, fixes the issue, or blocks the commit as configured.
     - **Depends‑on:** [T003, T007]
 
-- [ ] **T012 · Chore · P3: document fallback plan for swiftlint plugin failures**
+- [x] **T012 · Chore · P3: document fallback plan for swiftlint plugin failures**
     - **Context:** Plan Details > Risk Matrix (SwiftLint plugin issues or bugs with new Xcode/Swift versions)
     - **Action:**
         1. Document a clear fallback strategy in case the SwiftLint SPM plugin encounters critical issues with new Xcode or Swift versions (e.g., temporarily using a Run Script phase in Xcode that calls the SwiftLint CLI directly).

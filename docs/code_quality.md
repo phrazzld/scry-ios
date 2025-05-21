@@ -102,6 +102,49 @@ The project includes a pre-commit hook for SwiftLint that provides immediate fee
    ```
    **Note**: Using `--no-verify` is strongly discouraged and should only be used in exceptional circumstances. All code must still pass CI checks.
 
+### Fallback Plan for SwiftLint Plugin Failures
+
+In case the SwiftLint SPM build tool plugin encounters issues with new Xcode or Swift versions, follow this fallback strategy:
+
+1. **Temporarily Disable the Plugin**:
+   - In the target's Build Phases, uncheck the SwiftLint plugin in the "Run Build Tool Plug-ins" phase
+   
+2. **Add a Run Script Build Phase**:
+   - In Xcode, select your target
+   - Go to "Build Phases"
+   - Click "+" → "New Run Script Phase"
+   - Name it "SwiftLint"
+   - Move it before the "Compile Sources" phase
+   - Add the following script:
+     ```bash
+     export PATH="$PATH:/opt/homebrew/bin"
+     if which swiftlint > /dev/null; then
+       swiftlint --config "${SRCROOT}/.swiftlint.yml"
+     else
+       echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+     fi
+     ```
+
+3. **Ensure Correct SwiftLint Version**:
+   - Check Package.resolved for the current SwiftLint version
+   - Install that specific version:
+     ```bash
+     brew uninstall swiftlint
+     brew install swiftlint@[version]
+     # Or download the specific release from GitHub and install manually
+     ```
+
+4. **Report the Issue**:
+   - Create an issue in the [SwiftLint GitHub repository](https://github.com/realm/SwiftLint)
+   - Include details about the Xcode and Swift versions causing problems
+   - Link to the issue in our project management system
+
+5. **Monitor for Updates**:
+   - Watch for SwiftLint releases that address the issue
+   - Once resolved, remove the run script and re-enable the plugin
+
+This fallback ensures continuous code quality enforcement even when plugin infrastructure has compatibility issues with new toolchain releases.
+
 ### References
 
 - [SwiftLint GitHub Repository](https://github.com/realm/SwiftLint)
