@@ -1,6 +1,11 @@
+# Pre-commit Git hooks for SwiftLint
+
 repos:
-  - repo: https://github.com/realm/SwiftLint
-    rev: 0.55.1
+-   repo: https://github.com/realm/SwiftLint
+    rev: 0.59.1  # Match the version in Package.resolved
     hooks:
-      - id: swiftlint
-        args: [--fix, --config, .swiftlint.yml]
+    -   id: swiftlint
+        args: [
+            '--fix',  # Auto-fix violations where possible
+            '--config', '.swiftlint.yml'  # Use project's configuration
+        ]
