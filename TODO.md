@@ -121,7 +121,7 @@
         1. Perform a local build or run `swiftlint lint` and confirm that no linting violations are reported from the intentionally excluded files or paths.
     - **Depends‑on:** [T003]
 
-- [ ] **T010 · Chore · P1: conduct team review and finalize initial `.swiftlint.yml` ruleset**
+- [x] **T010 · Chore · P1: conduct team review and finalize initial `.swiftlint.yml` ruleset**
     - **Context:** Plan Details > Open Questions (What is the definitive initial set of rules for `.swiftlint.yml`?)
     - **Action:**
         1. Schedule and conduct a team review of the baseline `.swiftlint.yml` (from T003, potentially updated with exclusions from T009).

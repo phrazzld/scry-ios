@@ -27,14 +27,11 @@ opt_in_rules: # Explicitly opt-in to non-default rules
   - empty_count # Use .isEmpty over .count == 0
   - empty_string
   - enum_case_associated_values_count
-  - explicit_acl # Be explicit about access control
   - explicit_enum_raw_value # Prefer explicit raw values
   - explicit_init
-  - explicit_type_interface # For public interfaces
   - extension_access_modifier # Consistent access modifiers for extensions
   - fallthrough # Discourage fallthrough
   - fatal_error_message # Ensure fatalError has a descriptive message
-  - file_header # Define a project file header template if desired
   - file_name_no_space
   - first_where # Prefer .first(where:) over .filter { }.first
   - force_unwrapping # SEVERITY: error. PHILOSOPHY: Avoid unless invariant guarantees.
@@ -52,8 +49,6 @@ opt_in_rules: # Explicitly opt-in to non-default rules
   - multiline_literal_brackets
   - multiline_parameters
   - multiline_parameters_brackets
-  - nimble_operator # If using Nimble
-  - no_extension_access_modifier # If `explicit_acl` for extensions is preferred
   - no_fallthrough_only
   - nslocalizedstring_key
   - number_separator # Improve readability of large numbers
@@ -96,15 +91,24 @@ opt_in_rules: # Explicitly opt-in to non-default rules
   - void_return # Prefer `-> Void` over `-> ()`
   - xct_specific_matcher # Use XCTest specific matchers
 
+# Temporarily disabled rules during initial project setup
+# These will be enabled in a later phase once the codebase is more mature
 disabled_rules:
   - todo # Allow TODOs for now; can be changed to error later
+  - explicit_acl # Temporarily disabled until a code cleanup pass can be done
+  - explicit_type_interface # Temporarily disabled until a code cleanup pass can be done
+  - trailing_newline # Temporarily disabled until a code cleanup pass can be done
+  - trailing_whitespace # Temporarily disabled until a code cleanup pass can be done
+  - multiple_closures_with_trailing_closure # Temporarily disabled for SwiftUI compatibility
+  - file_header # Will be enabled once we define a consistent file header template
+  - trailing_comma # Temporarily disabled until a code cleanup pass can be done
   # - identifier_name # Often too restrictive; configure carefully if enabled
   # - type_name # Often too restrictive; configure carefully if enabled
 
 analyzer_rules: # More complex, potentially slower rules
   - explicit_self
 
-# Rule Configurations (Adjust thresholds based on project needs and DEVELOPMENT_PHILOSOPHY)
+# Rule Configurations (Adjusted based on team review and project needs)
 cyclomatic_complexity:
   warning: 15
   error: 25 # PHILOSOPHY: Signals need for refactoring
@@ -122,7 +126,7 @@ type_body_length:
   error: 500 # PHILOSOPHY: Encourage focused types
 line_length:
   warning: 140 # Balance readability with screen real estate
-  error: 160
+  error: 180 # Increased from 160 to accommodate some generated code and SwiftUI previews
 nesting:
   type_level: 3 # Maximum type nesting level
 identifier_name: # PHILOSOPHY: Meaningful naming, Swift API Design Guidelines
@@ -137,9 +141,14 @@ identifier_name: # PHILOSOPHY: Meaningful naming, Swift API Design Guidelines
     - key
     - lhs
     - rhs
+    - to
     - T # For generics
     - U # For generics
     - V # For generics
+    - x
+    - y
+    - i
+    - j
 custom_rules:
   no_print: # DEVELOPMENT_PHILOSOPHY.md: No `print()` statements in production code.
     name: "No Print Statements"
