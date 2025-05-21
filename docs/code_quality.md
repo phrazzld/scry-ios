@@ -8,7 +8,7 @@ Scry iOS uses SwiftLint to enforce code quality standards and consistent style a
 
 - **Build-time Integration**: SwiftLint is integrated as a Swift Package Manager build tool plugin. This means it runs automatically during the build process and will fail the build if linting errors are found.
 
-- **CI Integration**: SwiftLint is also part of our CI pipeline, ensuring that all code submitted via pull requests meets our quality standards.
+- **CI Integration**: SwiftLint is also part of our CI pipeline, ensuring that all code submitted via pull requests meets our quality standards. Our CI setup automatically uses the exact same SwiftLint version as specified in the project's Package.resolved file.
 
 ### How to Work with SwiftLint
 
@@ -25,6 +25,7 @@ Scry iOS uses SwiftLint to enforce code quality standards and consistent style a
 
 1. **Rule Configuration**: 
    - SwiftLint rules are configured in the `.swiftlint.yml` file at the project root.
+   - The configuration includes rules, rule customizations, and file exclusions (build directories, generated files, etc.).
    - Changes to the rule configuration should be proposed via pull request with a clear rationale for the change.
    - All rule changes must align with our [Development Philosophy](./DEVELOPMENT_PHILOSOPHY.md) and [Swift Appendix](./DEVELOPMENT_PHILOSOPHY_APPENDIX_SWIFT.md).
 
@@ -41,7 +42,7 @@ Scry iOS uses SwiftLint to enforce code quality standards and consistent style a
 ### Troubleshooting
 
 - **SwiftLint not running during build**: Ensure the SwiftLint build tool plugin is properly configured in your target's build phases.
-- **CI failing but local build passes**: Ensure you're using the same version of SwiftLint locally as is used in CI.
+- **CI failing but local build passes**: The CI pipeline automatically uses the same SwiftLint version as defined in the project's Package.resolved file. If you're running SwiftLint commands manually, make sure you're using this same version.
 - **Unexpected rule behavior**: Check the [SwiftLint documentation](https://github.com/realm/SwiftLint) for the specific rule causing issues.
 
 ### References

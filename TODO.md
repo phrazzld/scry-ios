@@ -86,7 +86,7 @@
         2. Push compliant code and confirm the CI job passes the linting step.
     - **Depends‑on:** [T003, T005]
 
-- [ ] **T007 · Chore · P2: document swiftlint integration, usage, and initial policies**
+- [x] **T007 · Chore · P2: document swiftlint integration, usage, and initial policies**
     - **Context:** Plan Details > Detailed Build Steps > 6. Document SwiftLint Usage; Documentation (Required readme updates)
     - **Action:**
         1. Create or update project documentation (e.g., `README.md`, `CONTRIBUTING.md`, or a dedicated `docs/code_quality.md`).
