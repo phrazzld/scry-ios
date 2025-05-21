@@ -109,7 +109,7 @@
         1. Review the documented policies within the project documentation for clarity, completeness, and enforceability.
     - **Depends‑on:** [T007]
 
-- [ ] **T009 · Chore · P2: identify and configure initial code exclusions in `.swiftlint.yml`**
+- [x] **T009 · Chore · P2: identify and configure initial code exclusions in `.swiftlint.yml`**
     - **Context:** Plan Details > Open Questions (Are there any existing codebases or generated files that need to be explicitly excluded in `.swiftlint.yml` from the outset?)
     - **Action:**
         1. Review the ScryiOS codebase to identify any third-party code, auto-generated files, or specific directories that should be excluded from SwiftLint analysis from the beginning.

@@ -1,6 +1,19 @@
 # DEVELOPMENT_PHILOSOPHY.md: Simplicity, Modularity, Separation, Testability, Coding Standards.
 # Strict by default, favoring explicit configurations.
 
+excluded: # Paths to ignore during linting
+  - build
+  - .build
+  - "thinktank_*/**"
+  - "ScryiOS.xcodeproj"
+  - Pods
+  - Carthage
+  - DerivedData
+  - "**/*.generated.swift"
+  - "**/*Mock.swift"
+  - "**/MockFiles"
+  - "**/TestMocks/**"
+
 opt_in_rules: # Explicitly opt-in to non-default rules
   - array_init
   - attributes # Ensure @objc attributes are on the same line for clarity
