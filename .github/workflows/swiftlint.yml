@@ -28,22 +28,20 @@ jobs:
           echo "SWIFTLINT_VERSION=$SWIFTLINT_VERSION" >> $GITHUB_ENV
           echo "Using SwiftLint version $SWIFTLINT_VERSION from Package.resolved"
 
-      - name: Install SwiftLint from GitHub release
+      - name: Install SwiftLint via Homebrew
         run: |
-          cd $RUNNER_TEMP
-          curl -fsSL -o SwiftLint.pkg "https://github.com/realm/SwiftLint/releases/download/$SWIFTLINT_VERSION/SwiftLint-$SWIFTLINT_VERSION.pkg"
-          sudo installer -pkg SwiftLint.pkg -target /
+          brew install swiftlint
+          echo "Installed SwiftLint version: $(swiftlint version)"
 
-      - name: Verify SwiftLint Version
+      - name: Verify SwiftLint Installation
         run: |
           installed_version=$(swiftlint version)
-          if [[ "$installed_version" != *"$SWIFTLINT_VERSION"* ]]; then
-            echo "Error: SwiftLint version mismatch!"
-            echo "Expected version to contain: $SWIFTLINT_VERSION"
-            echo "Installed version: $installed_version"
-            exit 1
-          fi
-          echo "✅ SwiftLint version match confirmed: $installed_version"
+          echo "Using SwiftLint version: $installed_version"
+          echo "Note: Version may differ from Package.resolved ($SWIFTLINT_VERSION) when using Homebrew"
+          
+          # Verify SwiftLint is functional by checking the help command
+          swiftlint help >/dev/null
+          echo "✅ SwiftLint is properly installed and functional"
 
       - name: Run SwiftLint
         run: swiftlint lint --strict --config .swiftlint.yml

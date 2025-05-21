@@ -10,7 +10,7 @@ Scry iOS uses SwiftLint to enforce code quality standards and consistent style a
 
 - **Pre-commit Hook Integration**: A Git pre-commit hook is available that automatically runs SwiftLint on staged Swift files before each commit, attempting to fix issues automatically where possible. This provides early feedback and helps catch issues before they even enter the codebase.
 
-- **CI Integration**: SwiftLint is also part of our CI pipeline, ensuring that all code submitted via pull requests meets our quality standards. Our CI setup automatically uses the exact same SwiftLint version as specified in the project's Package.resolved file.
+- **CI Integration**: SwiftLint is also part of our CI pipeline, ensuring that all code submitted via pull requests meets our quality standards. Our CI setup uses Homebrew to install SwiftLint, which may result in a slightly different version than specified in Package.resolved, but ensures reliable CI operation.
 
 ### How to Work with SwiftLint
 
