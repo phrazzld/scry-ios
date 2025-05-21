@@ -72,7 +72,7 @@
         2. Test the version verification step by (temporarily) forcing a mismatch to ensure it fails as expected.
     - **Depends‑on:** [T001]
 
-- [ ] **T006 · Chore · P1: add swiftlint lint command to ci workflow**
+- [x] **T006 · Chore · P1: add swiftlint lint command to ci workflow**
     - **Context:** Plan Details > Detailed Build Steps > 5. Integrate SwiftLint into CI Workflow; Architecture Blueprint (CI Job Step); Error & Edge‑Case Strategy (Lint Violations CI)
     - **Action:**
         1. In the CI configuration file (e.g., GitHub Actions `.yml`), add a new step after code checkout and SwiftLint CLI setup.
