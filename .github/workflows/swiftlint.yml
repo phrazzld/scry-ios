@@ -5,11 +5,13 @@ on:
     paths:
       - '**/*.swift'
       - '.swiftlint.yml'
+      - 'Package.resolved'
   push:
     branches: [ main, master, develop ]
     paths:
       - '**/*.swift'
       - '.swiftlint.yml'
+      - 'Package.resolved'
 
 jobs:
   swiftlint:
@@ -19,8 +21,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install SwiftLint
-        run: brew install swiftlint
+      - name: Extract SwiftLint version from Package.resolved
+        id: get-swiftlint-version
+        run: |
+          SWIFTLINT_VERSION=$(grep -A 5 '"identity" : "swiftlint"' Package.resolved | grep '"version"' | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+')
+          echo "SWIFTLINT_VERSION=$SWIFTLINT_VERSION" >> $GITHUB_ENV
+          echo "Using SwiftLint version $SWIFTLINT_VERSION from Package.resolved"
+
+      - name: Install SwiftLint from GitHub release
+        run: |
+          cd $RUNNER_TEMP
+          curl -fsSL -o SwiftLint.pkg "https://github.com/realm/SwiftLint/releases/download/$SWIFTLINT_VERSION/SwiftLint-$SWIFTLINT_VERSION.pkg"
+          sudo installer -pkg SwiftLint.pkg -target /
+
+      - name: Verify SwiftLint Version
+        run: |
+          installed_version=$(swiftlint version)
+          if [[ "$installed_version" != *"$SWIFTLINT_VERSION"* ]]; then
+            echo "Error: SwiftLint version mismatch!"
+            echo "Expected version to contain: $SWIFTLINT_VERSION"
+            echo "Installed version: $installed_version"
+            exit 1
+          fi
+          echo "✅ SwiftLint version match confirmed: $installed_version"
 
       - name: Run SwiftLint
         run: swiftlint lint --strict --config .swiftlint.yml

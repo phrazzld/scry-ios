@@ -58,7 +58,7 @@
         2. Confirm build failure with violations and success after fixing.
     - **Depends‑on:** [T002, T003]
 
-- [ ] **T005 · Chore · P1: ensure ci swiftlint cli version matches spm plugin version**
+- [x] **T005 · Chore · P1: ensure ci swiftlint cli version matches spm plugin version**
     - **Context:** Plan Details > Detailed Build Steps > 5. Integrate SwiftLint into CI Workflow; Error & Edge‑Case Strategy (Inconsistent SwiftLint Version); Risk Matrix (Inconsistent SwiftLint version)
     - **Action:**
         1. Determine the exact SwiftLint version used by the SPM plugin from the `Package.resolved` file.
