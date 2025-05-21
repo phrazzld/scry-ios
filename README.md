@@ -1,6 +1,6 @@
 # Scry iOS
 
-Mobile client for Scry on iOS.
+Mobile client for Scry on iOS - an AI-enhanced spaced repetition tool to help users remember the things they care about.
 
 ## Setup
 
@@ -62,6 +62,11 @@ The project uses a layered approach to code signing configuration:
 
 This approach allows each developer to use their own Apple Developer Team ID without changing the shared project files.
 
+## Development Guidelines
+
+### Code Quality
+This project uses SwiftLint to enforce code quality and style standards. See [Code Quality Guidelines](./docs/code_quality.md) for details on how SwiftLint is integrated and our policies regarding code style.
+
 ## Troubleshooting
 
 - If you encounter code signing issues, ensure your Apple Developer Team ID is correctly set in `Config/DeveloperSpecific.xcconfig`.
@@ -71,3 +76,6 @@ This approach allows each developer to use their own Apple Developer Team ID wit
   - Installing the required version via the App Store or Apple Developer portal
   - Using `xcenv` to automatically switch to the correct version: `brew install xcenv && xcenv install`
   - Setting the Xcode version manually: `sudo xcode-select -s /Applications/Xcode-16.3.app`
+  
+## Contributing
+Contributions are welcome! Please read our [Development Philosophy](./docs/DEVELOPMENT_PHILOSOPHY.md) for guidance on the principles we follow in this project.

@@ -1,0 +1,137 @@
+# DEVELOPMENT_PHILOSOPHY.md: Simplicity, Modularity, Separation, Testability, Coding Standards.
+# Strict by default, favoring explicit configurations.
+
+opt_in_rules: # Explicitly opt-in to non-default rules
+  - array_init
+  - attributes # Ensure @objc attributes are on the same line for clarity
+  - closure_body_length
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - discouraged_object_literal # Prefer initializers
+  - discouraged_optional_boolean # Use non-optional Booleans
+  - empty_collection_literal
+  - empty_count # Use .isEmpty over .count == 0
+  - empty_string
+  - enum_case_associated_values_count
+  - explicit_acl # Be explicit about access control
+  - explicit_enum_raw_value # Prefer explicit raw values
+  - explicit_init
+  - explicit_self # Enforce explicit self in closures with [weak self]
+  - explicit_type_interface # For public interfaces
+  - extension_access_modifier # Consistent access modifiers for extensions
+  - fallthrough # Discourage fallthrough
+  - fatal_error_message # Ensure fatalError has a descriptive message
+  - file_name_no_space
+  - first_where # Prefer .first(where:) over .filter { }.first
+  - force_unwrapping # SEVERITY: error. PHILOSOPHY: Avoid unless invariant guarantees.
+  - function_default_parameter_at_end
+  - identical_operands
+  - implicitly_unwrapped_optional # SEVERITY: error. PHILOSOPHY: Avoid.
+  - inert_defer
+  - joined_default_parameter
+  - last_where # Prefer .last(where:) over .filter { }.last
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - lower_acl_than_parent
+  - modifier_order # Consistent order for modifiers
+  - multiline_arguments
+  - multiline_function_chains
+  - multiline_literal_brackets
+  - multiline_parameters
+  - multiline_parameters_brackets
+  - no_extension_access_modifier # If `explicit_acl` for extensions is preferred
+  - no_fallthrough_only_cases
+  - nslocalizedstring_key
+  - number_separator # Improve readability of large numbers
+  - object_literal # Prefer initializers for UIColor, UIImage, etc.
+  - operator_usage_whitespace
+  - overridden_super_call # Ensure super is called when overriding
+  - prefer_self_type_over_type_of_self
+  - private_action # @IBAction should be private or fileprivate
+  - private_outlet # @IBOutlet should be private or fileprivate
+  - private_over_fileprivate # Prefer private unless fileprivate is strictly needed
+  - private_unit_test # Test classes and methods should be internal or public
+  - prohibited_interface_builder # Discourage IB if code-based UI is standard
+  - prohibited_super_call # Ensure super is not called where it shouldn't be
+  - raw_value_for_camel_cased_codable_enum
+  - redundant_nil_coalescing
+  - redundant_objc_attribute
+  - redundant_optional_initialization
+  - redundant_setters_for_computed_properties
+  - redundant_type_annotation
+  - redundant_void_return
+  - single_test_class
+  - sorted_first_last # Prefer min()/max() over sorted().first/last
+  - sorted_imports # Keep imports sorted
+  - static_operator
+  - strong_iboutlet # Use strong for IBOutlets (default behavior now)
+  - switch_case_on_newline
+  - test_case_accessibility
+  - toggle_bool
+  - trailing_closure
+  - unhandled_throwing_task # Ensure Task results/errors are handled
+  - unneeded_break_in_switch
+  - unneeded_parentheses_in_closure_argument
+  - untyped_error_in_catch
+  - unused_capture_list
+  - vertical_whitespace_between_cases
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - void_return # Prefer `-> Void` over `-> ()`
+
+disabled_rules:
+  - todo # Allow TODOs for now; can be changed to error later
+  # - identifier_name # Often too restrictive; configure carefully if enabled
+  # - type_name # Often too restrictive; configure carefully if enabled
+
+analyzer_rules: # More complex, potentially slower rules
+  - explicit_self
+
+# Rule Configurations (Adjust thresholds based on project needs and DEVELOPMENT_PHILOSOPHY)
+cyclomatic_complexity:
+  warning: 15
+  error: 25 # PHILOSOPHY: Signals need for refactoring
+file_length:
+  warning: 500
+  error: 700 # PHILOSOPHY: Encourage modularity and conciseness
+function_body_length:
+  warning: 60
+  error: 100 # PHILOSOPHY: Encourage focused functions
+function_parameter_count:
+  warning: 5
+  error: 7
+type_body_length:
+  warning: 300
+  error: 500 # PHILOSOPHY: Encourage focused types
+line_length:
+  warning: 140 # Balance readability with screen real estate
+  error: 160
+nesting:
+  type_level:
+    warning: 3
+    error: 5
+  statement_level:
+    warning: 5
+    error: 7
+identifier_name: # PHILOSOPHY: Meaningful naming, Swift API Design Guidelines
+  min_length:
+    error: 3 # Allow short names like 'id', 'vc', 'vm' in very local scope
+  max_length:
+    warning: 60
+    error: 80
+  excluded: # Common initialisms or allowed short names
+    - id
+    - URL
+    - key
+    - lhs
+    - rhs
+    - T # For generics
+    - U # For generics
+    - V # For generics
+custom_rules:
+  no_print: # DEVELOPMENT_PHILOSOPHY.md: No `print()` statements in production code.
+    name: "No Print Statements"
+    message: "Use a proper logging framework instead of print()."
+    regex: "print\\s*\\("
+    severity: error
