@@ -41,13 +41,57 @@ Critically important rules are maintained as errors:
 - `implicitly_unwrapped_optional`: Continues to be an error (safety)
 - `no_print`: Custom rule maintained as an error (proper logging)
 
+## Backlog Tracking for Disabled Rules
+
+The following tickets have been created to track the systematic re-enablement of temporarily disabled SwiftLint rules:
+
+### Code Cleanup Pass Rules
+- **T013**: Re-enable `explicit_acl` rule after access control cleanup pass
+  - **Target Timeline**: Q2 2024 (Sprint 4-5)
+  - **Effort Estimate**: Medium (affects multiple files)
+
+- **T014**: Re-enable `explicit_type_interface` rule after type interface cleanup pass  
+  - **Target Timeline**: Q2 2024 (Sprint 4-5)
+  - **Effort Estimate**: Medium (affects multiple files)
+
+- **T015**: Re-enable `trailing_newline` rule after file cleanup pass
+  - **Target Timeline**: Q1 2024 (Sprint 2-3)
+  - **Effort Estimate**: Low (automated fix available)
+
+- **T016**: Re-enable `trailing_whitespace` rule after file cleanup pass
+  - **Target Timeline**: Q1 2024 (Sprint 2-3)  
+  - **Effort Estimate**: Low (automated fix available)
+
+- **T017**: Re-enable `trailing_comma` rule after syntax cleanup pass
+  - **Target Timeline**: Q2 2024 (Sprint 3-4)
+  - **Effort Estimate**: Low (automated fix available)
+
+### Template-Dependent Rules
+- **T018**: Define file header template and re-enable `file_header` rule
+  - **Target Timeline**: Q1 2024 (Sprint 3)
+  - **Effort Estimate**: Low (template definition + automated application)
+
+### Feature-Dependent Rules  
+- **T019**: Review `multiple_closures_with_trailing_closure` for SwiftUI compatibility
+  - **Target Timeline**: Q2 2024 (Sprint 5-6)
+  - **Effort Estimate**: Medium (requires SwiftUI pattern analysis)
+
+- **T020**: Review and potentially enable `todo` rule with appropriate configuration
+  - **Target Timeline**: Q3 2024 (Sprint 7-8)
+  - **Effort Estimate**: Low (configuration change after TODO cleanup)
+
+### Review Cadence
+- **Monthly Reviews**: Check progress on active cleanup tickets
+- **Quarterly Reviews**: Evaluate new rules for adoption and adjust timelines
+- **Post-Sprint Reviews**: Re-assess effort estimates based on actual cleanup velocity
+
 ## Plan for Future Enhancement
 
-1. **Code Cleanup Pass**: Schedule a dedicated task to address the violations of temporarily disabled rules, then re-enable them.
+1. **Code Cleanup Pass**: Execute the backlog tickets above in priority order to systematically address violations of temporarily disabled rules.
 
 2. **Regular Reviews**: Conduct quarterly reviews of the SwiftLint configuration to:
-   - Re-evaluate temporarily disabled rules
-   - Consider enabling additional rules as the codebase matures
+   - Re-evaluate temporarily disabled rules using the backlog system above
+   - Consider enabling additional rules as the codebase matures  
    - Adjust thresholds based on real-world experience
 
 3. **Custom Rules**: Develop additional custom rules for Scry-specific patterns or requirements as they emerge.

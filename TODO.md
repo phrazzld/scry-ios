@@ -26,7 +26,7 @@
         1. Review the CI Integration section in `docs/code_quality.md` for accuracy.
     - **Depends‑on:** [T003]
 
-- [ ] **T007 · Chore · P1: update `docs/swiftlint_ruleset_review.md` with disabled rule ticket ids and timelines**
+- [x] **T007 · Chore · P1: update `docs/swiftlint_ruleset_review.md` with disabled rule ticket ids and timelines**
     - **Context:** Remediation Plan – Sprint X, cr-03 SwiftLint: Track Disabled Rules with Backlog & Ticket Refs, Step 2
     - **Action:**
         1. Edit `docs/swiftlint_ruleset_review.md`.
