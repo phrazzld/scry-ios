@@ -29,7 +29,7 @@
         1. Check the "Scry" target's "Build Phases" tab in Xcode to confirm the plugin is correctly added.
     - **Depends‑on:** [T001]
 
-- [ ] **T003 · Chore · P1: create baseline `.swiftlint.yml` configuration file**
+- [x] **T003 · Chore · P1: create baseline `.swiftlint.yml` configuration file**
     - **Context:** Plan Details > Detailed Build Steps > 3. Create and Configure `.swiftlint.yml`
     - **Action:**
         1. Create a file named `.swiftlint.yml` at the project root directory.
