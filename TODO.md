@@ -134,7 +134,7 @@
         1. Pull Request review comments, meeting notes, or a similar artifact confirms team agreement on the finalized ruleset.
     - **Depends‑on:** [T003, T009]
 
-- [ ] **T011 · Chore · P3: setup optional pre-commit hook for swiftlint**
+- [x] **T011 · Chore · P3: setup optional pre-commit hook for swiftlint**
     - **Context:** Plan Details > Detailed Build Steps > 7. Setup Pre-commit Hooks; Risk Matrix (Developers bypass local linting)
     - **Action:**
         1. If the team decides to proceed (see Clarification below), install `pre-commit` (e.g., `pip install pre-commit` or `brew install pre-commit`).
@@ -161,7 +161,8 @@
     - **Depends‑on:** [T007]
 
 ## Clarifications & Assumptions
-- [ ] **Issue:** Decision on whether the optional pre-commit hook setup (T011) will be implemented as part of this initial plan or deferred.
+- [x] **Issue:** Decision on whether the optional pre-commit hook setup (T011) will be implemented as part of this initial plan or deferred.
     - **Context:** PLAN.md > Open Questions > "Will the optional pre-commit hook setup be implemented as part of this initial task or as a follow-up?"
     - **Blocking?:** no (Task T011 is P3 and can be deferred based on this decision)
+    - **Resolution:** Implemented as part of the initial plan (T011)
 ```

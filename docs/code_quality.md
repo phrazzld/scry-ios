@@ -8,6 +8,8 @@ Scry iOS uses SwiftLint to enforce code quality standards and consistent style a
 
 - **Build-time Integration**: SwiftLint is integrated as a Swift Package Manager build tool plugin. This means it runs automatically during the build process and will fail the build if linting errors are found.
 
+- **Pre-commit Hook Integration**: A Git pre-commit hook is available that automatically runs SwiftLint on staged Swift files before each commit, attempting to fix issues automatically where possible. This provides early feedback and helps catch issues before they even enter the codebase.
+
 - **CI Integration**: SwiftLint is also part of our CI pipeline, ensuring that all code submitted via pull requests meets our quality standards. Our CI setup automatically uses the exact same SwiftLint version as specified in the project's Package.resolved file.
 
 ### How to Work with SwiftLint
@@ -73,8 +75,36 @@ Scry iOS uses SwiftLint to enforce code quality standards and consistent style a
 - **CI failing but local build passes**: The CI pipeline automatically uses the same SwiftLint version as defined in the project's Package.resolved file. If you're running SwiftLint commands manually, make sure you're using this same version.
 - **Unexpected rule behavior**: Check the [SwiftLint documentation](https://github.com/realm/SwiftLint) for the specific rule causing issues.
 
+### Pre-commit Hook Setup
+
+The project includes a pre-commit hook for SwiftLint that provides immediate feedback before code is committed. To set it up:
+
+1. **Install pre-commit**:
+   ```bash
+   brew install pre-commit
+   ```
+
+2. **Install the hooks**:
+   ```bash
+   cd /path/to/scry-ios
+   pre-commit install
+   ```
+
+3. **Usage**: After installation, the pre-commit hook will:
+   - Automatically run on `git commit`
+   - Check staged Swift files with SwiftLint
+   - Attempt to auto-fix issues where possible
+   - Block commits with unfixable errors
+   
+4. **Bypass (Only in Exceptional Cases)**:
+   ```bash
+   git commit -m "..." --no-verify
+   ```
+   **Note**: Using `--no-verify` is strongly discouraged and should only be used in exceptional circumstances. All code must still pass CI checks.
+
 ### References
 
 - [SwiftLint GitHub Repository](https://github.com/realm/SwiftLint)
 - [SwiftLint Rules Directory](https://realm.github.io/SwiftLint/rule-directory.html)
 - [Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
+- [pre-commit Framework](https://pre-commit.com/)
