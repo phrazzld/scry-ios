@@ -6,6 +6,11 @@ options:
 settings:
   base:
     PRODUCT_NAME: ScryiOS
+    
+packages:
+  SwiftLint:
+    url: https://github.com/realm/SwiftLint.git
+    from: 0.55.1
 
 targets:
   ScryiOS:
@@ -30,3 +35,7 @@ targets:
     configFiles:
       Debug: Config/Development.xcconfig
       Release: Config/Distribution.xcconfig
+    dependencies:
+      - package: SwiftLint
+        product: SwiftLintBuildToolPlugin
+        type: plugin

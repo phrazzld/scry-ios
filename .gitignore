@@ -9,3 +9,9 @@ DerivedData/
 
 # XcodeGen Local Overrides
 Config/DeveloperSpecific.xcconfig
+
+# Build artifacts
+build/
+
+# AI-assisted thinking directories
+thinktank_*/

@@ -1,0 +1,47 @@
+name: SwiftLint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.swift'
+      - '.swiftlint.yml'
+      - 'Package.resolved'
+  push:
+    branches: [ main, master, develop ]
+    paths:
+      - '**/*.swift'
+      - '.swiftlint.yml'
+      - 'Package.resolved'
+
+jobs:
+  swiftlint:
+    name: SwiftLint
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Extract SwiftLint version from Package.resolved
+        id: get-swiftlint-version
+        run: |
+          SWIFTLINT_VERSION=$(grep -A 5 '"identity" : "swiftlint"' Package.resolved | grep '"version"' | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+')
+          echo "SWIFTLINT_VERSION=$SWIFTLINT_VERSION" >> $GITHUB_ENV
+          echo "Using SwiftLint version $SWIFTLINT_VERSION from Package.resolved"
+
+      - name: Install SwiftLint via Homebrew
+        run: |
+          brew install swiftlint
+          echo "Installed SwiftLint version: $(swiftlint version)"
+
+      - name: Verify SwiftLint Installation
+        run: |
+          installed_version=$(swiftlint version)
+          echo "Using SwiftLint version: $installed_version"
+          echo "Note: Version may differ from Package.resolved ($SWIFTLINT_VERSION) when using Homebrew"
+          
+          # Verify SwiftLint is functional by checking the help command
+          swiftlint help >/dev/null
+          echo "✅ SwiftLint is properly installed and functional"
+
+      - name: Run SwiftLint
+        run: swiftlint lint --strict --config .swiftlint.yml

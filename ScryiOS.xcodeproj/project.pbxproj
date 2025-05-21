@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BEA4BF5797E3173A25496F2 /* SwiftLintBuildToolPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 47F4D55642AF2B5E2EF70A83 /* SwiftLintBuildToolPlugin */; };
 		750D604F451FDA32815EEB44 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E465899A8DA4C00CA4060 /* ContentView.swift */; };
 		7B75BAEBD7125B8DD82A4B22 /* ScryiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F75249D3A3F6E8E9CDB37C /* ScryiOSApp.swift */; };
 		9614196757CC29568E413D05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F6FDCE5A0028466DA60098 /* SceneDelegate.swift */; };
@@ -23,6 +24,17 @@
 		CEF96F4E56F0D9C834B2E786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F2F6FDCE5A0028466DA60098 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		184680678127DE924BD5F85B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BEA4BF5797E3173A25496F2 /* SwiftLintBuildToolPlugin in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1B44CF1F8502FABB9C507137 /* Views */ = {
@@ -95,6 +107,7 @@
 			buildConfigurationList = 897862C638798729B8EFB941 /* Build configuration list for PBXNativeTarget "ScryiOS" */;
 			buildPhases = (
 				1894BF288CFA5EAE43BEA325 /* Sources */,
+				184680678127DE924BD5F85B /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -102,6 +115,7 @@
 			);
 			name = ScryiOS;
 			packageProductDependencies = (
+				47F4D55642AF2B5E2EF70A83 /* SwiftLintBuildToolPlugin */,
 			);
 			productName = ScryiOS;
 			productReference = 15A0F6F4D5545B9F5B08CAEC /* ScryiOS.app */;
@@ -128,6 +142,9 @@
 			);
 			mainGroup = 57AFBFEF4EAE69116653F7BB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7C039CABC4523ACA2FC02EB2 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			preferredProjectObjectVersion = 54;
 			projectDirPath = "";
 			projectRoot = "";
@@ -322,6 +339,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C039CABC4523ACA2FC02EB2 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.55.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		47F4D55642AF2B5E2EF70A83 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C039CABC4523ACA2FC02EB2 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = SwiftLintBuildToolPlugin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4C96A32D392900D758CB6097 /* Project object */;
 }
