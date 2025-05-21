@@ -96,11 +96,27 @@ The project includes a pre-commit hook for SwiftLint that provides immediate fee
    - Attempt to auto-fix issues where possible
    - Block commits with unfixable errors
    
-4. **Bypass (Only in Exceptional Cases)**:
+4. **Emergency Bypass Procedures (Restricted)**:
+   
+   **POLICY**: Bypassing pre-commit hooks using `--no-verify` is **STRICTLY FORBIDDEN** under normal circumstances. All issues must be fixed locally before committing.
+   
+   In documented emergency situations only, the following procedure must be followed:
+   
+   - **Prior Approval**: Obtain explicit approval from a senior engineer.
+   - **Ticket Requirement**: The bypass must be linked to a documented emergency in the issue tracking system.
+   - **Commit Message**: The commit message MUST include:
+     1. The emergency ticket/issue number (e.g., `[EMERGENCY-123]`)
+     2. The name of the senior engineer who approved the bypass
+     3. A detailed justification explaining why fixing the issue locally is not possible
+   - **Post-Emergency Documentation**: After the emergency is resolved, document the bypass in the team knowledge base, including root cause and prevention measures.
+   
+   **IMPORTANT**: All emergency commits that bypass hooks are still subject to code review and MUST pass CI checks. Emergency is not an excuse for quality compromise.
+   
+   **⚠️ THIS COMMAND IS FOR EMERGENCY USE ONLY ⚠️**
    ```bash
-   git commit -m "..." --no-verify
+   # EMERGENCY USE ONLY - Requires senior engineer approval and emergency ticket
+   git commit -m "[EMERGENCY-123] Commit message with detailed justification and approver name" --no-verify
    ```
-   **Note**: Using `--no-verify` is strongly discouraged and should only be used in exceptional circumstances. All code must still pass CI checks.
 
 ### Fallback Plan for SwiftLint Plugin Failures
 
