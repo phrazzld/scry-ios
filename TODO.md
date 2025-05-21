@@ -14,7 +14,7 @@
         1. Review `docs/code_quality.md` to confirm policy clarity and removal/restriction of bypass instructions.
     - **Depends‑on:** none
 
-- [ ] **T004 · Chore · P1: update `docs/code_quality.md` regarding ci swiftlint version enforcement**
+- [x] **T004 · Chore · P1: update `docs/code_quality.md` regarding ci swiftlint version enforcement**
     - **Context:** Remediation Plan – Sprint X, cr-01 CI: Enforce SwiftLint Version Parity & Fail on Mismatch, Step 3
     - **Action:**
         1. Update the CI Integration section in `docs/code_quality.md`.
