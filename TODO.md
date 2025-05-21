@@ -50,7 +50,7 @@
     - **Depends‑on:** [T009, T010, T011]
 
 ## SwiftLint & CI
-- [ ] **T002 · Bugfix · P1: activate `explicit_self` swiftlint rule in `.swiftlint.yml`**
+- [x] **T002 · Bugfix · P1: activate `explicit_self` swiftlint rule in `.swiftlint.yml`**
     - **Context:** Remediation Plan – Sprint X, cr-04 SwiftLint: Fix `analyzer_rules` for `explicit_self`
     - **Action:**
         1. Add `explicit_self` to the `opt_in_rules` list in the `.swiftlint.yml` file.

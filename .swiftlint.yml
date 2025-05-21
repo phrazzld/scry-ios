@@ -29,6 +29,7 @@ opt_in_rules: # Explicitly opt-in to non-default rules
   - enum_case_associated_values_count
   - explicit_enum_raw_value # Prefer explicit raw values
   - explicit_init
+  - explicit_self # Prefer self.property over property
   - extension_access_modifier # Consistent access modifiers for extensions
   - fallthrough # Discourage fallthrough
   - fatal_error_message # Ensure fatalError has a descriptive message
@@ -106,7 +107,6 @@ disabled_rules:
   # - type_name # Often too restrictive; configure carefully if enabled
 
 analyzer_rules: # More complex, potentially slower rules
-  - explicit_self
 
 # Rule Configurations (Adjusted based on team review and project needs)
 cyclomatic_complexity:
