@@ -17,7 +17,7 @@
         2. Inspect `Package.resolved` to ensure the SwiftLint entry is present and correct.
     - **Depends‑on:** none
 
-- [ ] **T002 · Chore · P1: apply swiftlintplugin to main app target**
+- [x] **T002 · Chore · P1: apply swiftlintplugin to main app target**
     - **Context:** Plan Details > Detailed Build Steps > 2. Apply SwiftLintPlugin to Target
     - **Action:**
         1. Select the main application target (e.g., "Scry") in the Xcode project editor.
