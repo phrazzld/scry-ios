@@ -161,9 +161,90 @@ In case the SwiftLint SPM build tool plugin encounters issues with new Xcode or 
 
 This fallback ensures continuous code quality enforcement even when plugin infrastructure has compatibility issues with new toolchain releases.
 
+## Code Formatting (SwiftFormat)
+
+SwiftFormat is an automated code formatting tool that ensures consistent code style across the Scry iOS codebase. It complements SwiftLint by focusing on code formatting and style rather than logic and conventions.
+
+### Purpose and Benefits
+
+- **Consistency**: Eliminates debates about formatting preferences by enforcing a unified code style
+- **Automation**: Reduces manual effort in code reviews by automatically fixing formatting issues
+- **Readability**: Maintains clean, readable code that adheres to Swift community standards
+- **Integration**: Works seamlessly with our existing toolchain (SwiftLint, pre-commit hooks, CI)
+
+### Configuration
+
+SwiftFormat is configured via a `.swiftformat` file in the project root. This configuration file:
+
+- Defines formatting rules and preferences specific to the Scry iOS project
+- Ensures consistency between local development and CI environments
+- Can be customized to accommodate project-specific style requirements
+- Is version-controlled to maintain consistency across team members
+
+**Example configuration options:**
+- Line length limits (aligned with SwiftLint settings)
+- Indentation preferences (spaces vs. tabs)
+- Brace placement and spacing rules
+- Import organization and sorting
+
+### Integration and Enforcement
+
+SwiftFormat is enforced at multiple stages of the development workflow:
+
+1. **Pre-commit Hooks**: 
+   - Automatically formats staged Swift files before each commit
+   - Prevents improperly formatted code from entering the repository
+   - Provides immediate feedback to developers
+
+2. **CI Pipeline**:
+   - Verifies that all code adheres to formatting standards
+   - Fails builds if formatting violations are detected
+   - Ensures consistency across all pull requests
+
+3. **IDE Integration** (Optional):
+   - Can be integrated with Xcode for real-time formatting
+   - Provides formatting-on-save capabilities
+   - Reduces pre-commit formatting time
+
+### Installation and Usage
+
+1. **Install SwiftFormat**:
+   ```bash
+   brew install swiftformat
+   ```
+
+2. **Manual formatting**:
+   ```bash
+   # Format specific file
+   swiftformat /path/to/file.swift
+   
+   # Format entire project
+   swiftformat .
+   
+   # Check formatting without making changes
+   swiftformat --lint .
+   ```
+
+3. **Pre-commit integration**: SwiftFormat runs automatically through the pre-commit framework when properly configured.
+
+### Working with SwiftFormat
+
+- **Automated fixes**: Most formatting issues are resolved automatically without developer intervention
+- **Consistent style**: Developers can focus on logic and functionality rather than formatting minutiae
+- **Team alignment**: Reduces formatting-related discussions in code reviews
+- **Complementary to SwiftLint**: Works alongside SwiftLint to ensure both style and convention compliance
+
+### Troubleshooting
+
+- **Formatting conflicts**: If SwiftFormat changes conflict with SwiftLint rules, update configurations to align both tools
+- **Performance**: SwiftFormat is fast for individual files but may take time for large codebases
+- **Configuration updates**: Changes to `.swiftformat` should be tested across the codebase before committing
+
 ### References
 
 - [SwiftLint GitHub Repository](https://github.com/realm/SwiftLint)
 - [SwiftLint Rules Directory](https://realm.github.io/SwiftLint/rule-directory.html)
+- [SwiftFormat GitHub Repository](https://github.com/nicklockwood/SwiftFormat)
+- [SwiftFormat Rules Documentation](https://github.com/nicklockwood/SwiftFormat/blob/main/Rules.md)
 - [Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
 - [pre-commit Framework](https://pre-commit.com/)

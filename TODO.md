@@ -38,7 +38,7 @@
         1. Review `docs/swiftlint_ruleset_review.md` to ensure all relevant ticket IDs and timelines are accurately listed.
     - **Depends‑on:** [T005]
 
-- [ ] **T012 · Chore · P1: document swiftformat tool and usage in `docs/code_quality.md`**
+- [x] **T012 · Chore · P1: document swiftformat tool and usage in `docs/code_quality.md`**
     - **Context:** Remediation Plan – Sprint X, cr-05 Tooling: Integrate Automated Code Formatting (SwiftFormat), Step 5
     - **Action:**
         1. Add a new section or update an existing one in `docs/code_quality.md` to describe the integrated code formatting tool (SwiftFormat).
