@@ -22,7 +22,8 @@ struct ContentView: View {
                 Spacer().frame(height: 40)
                 
                 Button(action: {
-                    print("Button tapped!")
+                    // Using a comment instead of print for logging
+                    // TODO: Add proper logging mechanism
                 }) {
                     Text("Get Started")
                         .font(.headline)

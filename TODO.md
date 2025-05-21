@@ -42,7 +42,7 @@
         1. Validate the file's presence at the project root and its content against the baseline specified in `PLAN.MD`.
     - **Depends‑on:** none
 
-- [ ] **T004 · Test · P1: verify local swiftlint build enforcement**
+- [x] **T004 · Test · P1: verify local swiftlint build enforcement**
     - **Context:** Plan Details > Detailed Build Steps > 4. Verify Local Integration; Testing Strategy (Local Build)
     - **Action:**
         1. Clean the project (`Cmd+Shift+K`) and then build it (`Cmd+B`) in Xcode.
