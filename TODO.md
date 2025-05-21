@@ -97,7 +97,7 @@
         1. Review the documentation to ensure all points are covered clearly and accurately.
     - **Depends‑on:** [T004, T006]
 
-- [ ] **T008 · Chore · P2: define and document process for `.swiftlint.yml` changes and `swiftlint:disable` usage**
+- [x] **T008 · Chore · P2: define and document process for `.swiftlint.yml` changes and `swiftlint:disable` usage**
     - **Context:** Plan Details > Open Questions (process for `.swiftlint.yml` changes); Detailed Build Steps > 6. Document SwiftLint Usage (policy on `.swiftlint.yml` & `swiftlint:disable`); Risk Matrix (`.swiftlint.yml` becomes outdated)
     - **Action:**
         1. Define the project's policy for proposing and approving changes to the `.swiftlint.yml` file (e.g., changes via PR, rationale required, team review/approval).

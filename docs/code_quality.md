@@ -29,15 +29,43 @@ Scry iOS uses SwiftLint to enforce code quality standards and consistent style a
    - Changes to the rule configuration should be proposed via pull request with a clear rationale for the change.
    - All rule changes must align with our [Development Philosophy](./DEVELOPMENT_PHILOSOPHY.md) and [Swift Appendix](./DEVELOPMENT_PHILOSOPHY_APPENDIX_SWIFT.md).
 
-2. **Disabling Rules**:
-   - Use of `swiftlint:disable` comments in code is strongly discouraged.
-   - If you feel a rule needs to be disabled for a specific case:
-     - First consider if the code can be refactored to comply with the rule.
-     - If disabling is absolutely necessary, add a clear comment explaining WHY the rule is being disabled.
-     - All rule disabling requires approval during code review.
+2. **Process for Proposing Changes to `.swiftlint.yml`**:
+   - **Step 1**: Create a new branch for your proposed changes.
+   - **Step 2**: Modify the `.swiftlint.yml` file with your proposed changes.
+   - **Step 3**: In your pull request description, include:
+     - A detailed explanation of WHY the change is needed
+     - The expected impact on existing code
+     - How the change aligns with our Development Philosophy
+     - Examples of code that would benefit from or be affected by the change
+   - **Step 4**: Request reviews from at least two team members, including one senior engineer.
+   - **Step 5**: Address feedback and iterate as needed.
+   - **Approval Criteria**: Changes will be evaluated based on:
+     - Alignment with Development Philosophy
+     - Impact on developer productivity vs. code quality
+     - Consistency with Swift best practices
+     - Balance between strictness and practicality
 
-3. **Rule Disagreements**:
+3. **Disabling Rules**:
+   - Use of `swiftlint:disable` comments in code is **strongly discouraged** and considered a last resort.
+   - If you feel a rule needs to be disabled for a specific case:
+     - **First Option**: Refactor the code to comply with the rule.
+     - **Second Option**: Propose a change to the global rule configuration if appropriate.
+     - **Last Resort**: If disabling is absolutely necessary:
+       ```swift
+       // swiftlint:disable:next rule_name - JUSTIFICATION: Detailed explanation of why this exception is necessary and why refactoring isn't possible
+       ```
+     - The justification MUST include:
+       - Why refactoring isn't possible or practical
+       - Why this is an exceptional case
+       - Why this doesn't compromise code quality or maintenance
+   - **Review Process**: All `swiftlint:disable` usage requires:
+     - Explicit approval during code review
+     - Sign-off from a senior engineer
+     - Documentation in the PR description
+
+4. **Rule Disagreements**:
    - If you disagree with a particular rule or its severity, the appropriate channel is to propose a change to `.swiftlint.yml` via pull request, not to disable the rule in your code.
+   - Temporary disagreements should be discussed in team meetings or designated Slack channels rather than being resolved through code comments.
 
 ### Troubleshooting
 
